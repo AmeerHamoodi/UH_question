@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer-extra");
 const prompt = require("prompt-sync")({ sigint: true });
-const faker = require("@faker-js/faker");
+const fs = require("fs/promises");
 
 console.log("Welcome!");
 
@@ -37,6 +37,7 @@ puppeteer.use(StealthPlugin());
 
 (async () => {
     const browser = await puppeteer.launch({ headless: false, args: ["--no-sandbox"] });
+    const names = (await fs.readFile("./name_file.txt", "utf-8")).split("\n");
 
     for (let i = 0; i < numberOfAgents; i++) {
         const page = await browser.newPage();
@@ -57,11 +58,13 @@ puppeteer.use(StealthPlugin());
         await element.focus();
         // hack to make sure that name is always entered
         await element.press("Backspace");
-        await page.keyboard.type(faker.faker.person.fullName());
+        await page.keyboard.type(names[(i + names.length) % names.length]);
 
-        // find button
-        const button = await page.waitForSelector("[jsName=Qx7uuf]");
-        await button.click();
+        const micAndCam = await page.waitForSelector("[jsName=BOHaEe]");
+        await micAndCam.click();
+
+        const joinButton = await page.waitForSelector("[jsName=Qx7uuf]");
+        await joinButton.click();
 
         await element.dispose();
     }

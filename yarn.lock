@@ -24,11 +24,6 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@faker-js/faker@^8.3.1":
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-8.3.1.tgz#7753df0cb88d7649becf984a96dd1bd0a26f43e3"
-  integrity sha512-FdgpFxY6V6rLZE9mmIBb9hM0xpfvQOSNOLnzolzKwsE1DH+gC7lEKV1p1IbR0lAYyvYd5a4u3qWJzowUkw1bIw==
-
 "@puppeteer/browsers@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-1.9.0.tgz#dfd0aad0bdc039572f1b57648f189525d627b7ff"
